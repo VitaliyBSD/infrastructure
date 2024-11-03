@@ -1,0 +1,58 @@
+---
+
+- name: Configure hostname
+  ansible.builtin.hostname:
+    name: '{{ inventory_hostname }}'
+
+- name: Configure timezone
+  community.general.timezone:
+    name: America/New_York
+
+- name: Create user
+  ansible.builtin.user:
+    append: true
+    groups: sudo
+    name: '{{ username }}'
+    shell: /bin/bash
+
+- name: Create sudo config for user
+  ansible.builtin.template:
+    dest: /etc/sudoers.d/{{ username }}
+    group: root
+    mode: "0400"
+    owner: root
+    src: sudo_user.j2
+
+- name: Install dependencies
+  ansible.builtin.apt:
+    autoremove: true
+    clean: true
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - bind9-dnsutils
+    - curl
+    - ethtool
+    - hdparm
+    - htop
+    - iftop
+    - iotop
+    - jq
+    - lftp
+    - lm-sensors
+    - lshw
+    - lsof
+    - mtr
+    - neovim
+    - net-tools
+    - netcat-traditional
+    - nmap
+    - openssh-client
+    - openssh-server
+    - pv
+    - tcpdump
+    - tmux
+    - tree
+    - unzip
+    - wget
+    - whois
