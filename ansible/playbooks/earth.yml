@@ -1,0 +1,8 @@
+---
+
+- hosts: earth
+  become: true
+  gather_facts: true
+  roles:
+    - core
+    - workstation

@@ -1,0 +1,8 @@
+---
+
+- hosts: pluto
+  become: true
+  gather_facts: true
+  roles:
+    - core
+    - workstation
