@@ -1,0 +1,51 @@
+---
+
+- name: Install desktop related packages
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    autoremove: true
+    clean: true
+    state: present
+  with_items:
+    - ansible
+    - arandr
+    - feh
+    - firefox-esr
+    - flameshot
+    - fonts-font-awesome
+    - fonts-liberation
+    - fonts-noto-core
+    - fonts-noto-mono
+    - fonts-open-sans
+    - fonts-terminus-otb
+    - git
+    - i3
+    - i3lock
+    - i3status
+    - keepassx
+    - kitty
+    - neovim
+    - pulsemixer
+    - redshift-gtk
+    - syncthing
+    - telegram-desktop
+    - tig
+    - vlc
+    - weechat
+    - xorg
+
+- name: Populate NeoVIM config
+  ansible.builtin.template:
+    dest: /home/{{ username }}/.config/nvim/init.vim
+    group: '{{ username }}'
+    mode: "0755"
+    owner: '{{ username }}'
+    src: nvim_init.j2
+
+- name: Populate Kitty config
+  ansible.builtin.template:
+    dest: /home/{{ username }}/.config/kitty/kitty.conf
+    group: '{{ username }}'
+    mode: "0640"
+    owner: '{{ username }}'
+    src: kitty.conf.j2

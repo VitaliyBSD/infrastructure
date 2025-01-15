@@ -1,0 +1,53 @@
+syntax on
+filetype indent plugin on
+" set cursorline
+set expandtab
+set nobackup          " Do not write backup files
+set noswapfile        " Do not write .swp files
+set nowb              " No automatic backups
+set number
+set shiftwidth=4
+set softtabstop=4
+set tabstop=8
+set background=light
+set cursorline
+set list
+set lcs+=space:·
+
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+Plugin 'hashivim/vim-terraform'
+Plugin 'sainnhe/sonokai'
+Plugin 'fatih/vim-go'
+call vundle#end()
+filetype plugin indent on
+
+colorscheme sonokai
+
+map <C-n> :NERDTreeToggle<CR>   " Ctrl+N to toggle NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the last open window
+
+map <F5> :setlocal spell! spelllang=en_us<CR>
+
+" Automatically deletes all trailing whitespace on save.
+autocmd BufWritePre * %s/\s\+$//e
+
+" Go
+au BufRead,BufNewFile *.go setfiletype go
+au FileType go setlocal noexpandtab shiftwidth=8 tabstop=8 softtabstop=8
+" Makefiles
+au BufRead,BufNewFile Makefile setlocal noexpandtab
+" yml files
+au BufRead,BufNewFile *.yml setfiletype yaml
+au FileType yaml setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" Terraform
+au BufRead,BufNewFile *.tf setfiletype tf
+au FileType tf setlocal shiftwidth=2 tabstop=2 softtabstop=2
+" Python
+au BufRead,BufNewFile *.py setfiletype py
+au FileType py setlocal expandtab autoindent shiftwidth=4 tabstop=4 softtabstop=4
+" HTML
+au BufRead,BufNewFile *.html setfiletype html
+au FileType html setlocal expandtab autoindent shiftwidth=2 tabstop=2 softtabstop=2
