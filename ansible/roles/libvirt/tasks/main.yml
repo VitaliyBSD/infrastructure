@@ -1,0 +1,21 @@
+---
+
+- name: Install libvirt
+  ansible.builtin.apt:
+    name: '{{ item }}'
+    state: present
+  with_items:
+    - libvirt-daemon-system
+    - qemu-system
+
+- name: Add user to libvirt group
+  ansible.builtin.user:
+    append: true
+    groups: libvirt
+    name: "{{ username }}"
+
+- name: Start libvirtd
+  ansible.builtin.service:
+    enabled: true
+    name: libvirtd
+    state: started
