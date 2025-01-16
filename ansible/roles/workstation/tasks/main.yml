@@ -34,18 +34,50 @@
     - weechat
     - xorg
 
+- name: Create NeoVIM config directory
+  ansible.builtin.file:
+    path: /home/{{ username }}/.config/nvim
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    state: directory
+    mode: "0755"
+
 - name: Populate NeoVIM config
   ansible.builtin.template:
-    dest: /home/{{ username }}/.config/nvim/init.vim
-    group: '{{ username }}'
-    mode: "0755"
-    owner: '{{ username }}'
     src: nvim_init.j2
+    dest: /home/{{ username }}/.config/nvim/init.vim
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: "0644"
+
+- name: Create Kitty config directory
+  ansible.builtin.file:
+    path: /home/{{ username }}/.config/kitty
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    state: directory
+    mode: "0755"
 
 - name: Populate Kitty config
   ansible.builtin.template:
-    dest: /home/{{ username }}/.config/kitty/kitty.conf
-    group: '{{ username }}'
-    mode: "0640"
-    owner: '{{ username }}'
     src: kitty.conf.j2
+    dest: /home/{{ username }}/.config/kitty/kitty.conf
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: "0644"
+
+- name: Create i3 config directory
+  ansible.builtin.file:
+    path: /home/{{ username }}/.config/i3
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    state: directory
+    mode: "0755"
+
+- name: Populate i3 config
+  ansible.builtin.template:
+    src: i3_config.j2
+    dest: /home/{{ username }}/.config/i3/config
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    mode: "0644"
