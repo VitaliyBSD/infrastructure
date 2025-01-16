@@ -1,0 +1,26 @@
+---
+
+- name: Download Grafana GPG key
+  ansible.builtin.get_url:
+    url: https://packages.grafana.com/gpg.key
+    dest: /usr/share/keyrings/grafana.key
+    mode: '0644'
+
+- name: Add Grafana apt source
+  ansible.builtin.lineinfile:
+    path: /etc/apt/sources.list.d/grafana.list
+    line: "deb [signed-by=/usr/share/keyrings/grafana.key] https://packages.grafana.com/oss/deb stable main"
+    create: true
+    mode: '0644'
+
+- name: Install Grafana
+  ansible.builtin.apt:
+    name: grafana
+    update_cache: true
+    state: present
+
+- name: Start and enable Grafana
+  ansible.builtin.systemd:
+    name: grafana-server
+    enabled: true
+    state: started
