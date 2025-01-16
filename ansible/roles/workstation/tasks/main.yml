@@ -34,22 +34,6 @@
     - weechat
     - xorg
 
-- name: Create NeoVIM config directory
-  ansible.builtin.file:
-    path: /home/{{ username }}/.config/nvim
-    owner: '{{ username }}'
-    group: '{{ username }}'
-    state: directory
-    mode: "0755"
-
-- name: Populate NeoVIM config
-  ansible.builtin.template:
-    src: nvim_init.j2
-    dest: /home/{{ username }}/.config/nvim/init.vim
-    owner: '{{ username }}'
-    group: '{{ username }}'
-    mode: "0644"
-
 - name: Create Kitty config directory
   ansible.builtin.file:
     path: /home/{{ username }}/.config/kitty
