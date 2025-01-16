@@ -1,0 +1,16 @@
+---
+
+- name: Populate K3s unit file
+  ansible.builtin.template:
+    src: k3s.service.j2
+    dest: /etc/systemd/system/k3s.service
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Enable and start K3s
+  ansible.builtin.systemd_service:
+    name: k3s
+    state: started
+    enabled: true
+    daemon_reload: true

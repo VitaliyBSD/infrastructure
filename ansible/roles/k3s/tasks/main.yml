@@ -7,3 +7,11 @@
     owner: root
     group: root
     mode: '0755'
+
+- name: Configure server
+  ansible.builtin.include_tasks: server.yml
+  when: k3s_master == true
+
+- name: Configure agent
+  ansible.builtin.include_tasks: agent.yml
+  when: k3s_master == false
