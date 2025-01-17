@@ -1,0 +1,6 @@
+---
+
+- name: Restart Alertmanager
+  ansible.builtin.service:
+    name: prometheus-alertmanager
+    state: restarted
