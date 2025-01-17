@@ -23,6 +23,14 @@
     owner: root
     src: sudo_user.j2
 
+- name: Populate BASH config
+  ansible.builtin.copy:
+    src: bashrc.j2
+    dest: /home/{{ username }}/.bashrc
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+
 - name: Install dependencies
   ansible.builtin.apt:
     autoremove: true
