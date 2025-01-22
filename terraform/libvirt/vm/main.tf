@@ -14,6 +14,7 @@ resource "libvirt_volume" "vm_disk" {
   name   = "${var.vm_name}-disk"
   source = var.disk_image
   format = "qcow2"
+  pool   = var.storage_pool
 }
 
 resource "libvirt_domain" "vm" {
