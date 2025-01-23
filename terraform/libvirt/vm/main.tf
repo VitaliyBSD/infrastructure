@@ -11,19 +11,21 @@ provider "libvirt" {
 }
 
 resource "libvirt_volume" "vm_disk" {
-  name   = "${var.vm_name}-disk"
+  count  = var.vmcount
+  name   = "${var.vm_name}${count.index}"
   source = var.disk_image
   format = "qcow2"
   pool   = var.storage_pool
 }
 
 resource "libvirt_domain" "vm" {
-  name   = var.vm_name
+  count  = var.vmcount
+  name   = "${var.vm_name}${count.index}"
   memory = var.memory
   vcpu   = var.vcpu
 
   disk {
-    volume_id = libvirt_volume.vm_disk.id
+    volume_id = libvirt_volume.vm_disk[count.index].id
   }
 
   network_interface {

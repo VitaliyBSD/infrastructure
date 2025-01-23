@@ -24,7 +24,6 @@ variable "vcpu" {
 variable "disk_image" {
   type        = string
   description = "Path to the QCOW2 image."
-  #  default     = "http://mercury/debian-12-generic-amd64.qcow2"
   default     = "https://cdimage.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
 }
 
@@ -38,4 +37,10 @@ variable "network" {
   type        = string
   description = "Libvirt network name for the VM."
   default     = "lab"
+}
+
+variable "vmcount" {
+  type        = number
+  description = "Number of VM instances to create."
+  default     = 1
 }
