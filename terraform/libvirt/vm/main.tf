@@ -29,7 +29,8 @@ resource "libvirt_domain" "vm" {
   }
 
   network_interface {
-    network_name = var.network
+    network_name   = var.network
+    wait_for_lease = true
   }
 
   console {
@@ -41,5 +42,11 @@ resource "libvirt_domain" "vm" {
   graphics {
     type        = "spice"
     listen_type = "none"
+  }
+}
+
+output "instance_ips" {
+  value = {
+    for instance in libvirt_domain.vm : instance.name => instance.network_interface[0].addresses
   }
 }
