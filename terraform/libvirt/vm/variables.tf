@@ -1,7 +1,7 @@
 variable "libvirt_uri" {
   type        = string
   description = "URI for the libvirt connection."
-  default     = "qemu+ssh://root@mercury/system"
+  default     = "qemu:///system"
 }
 
 variable "vm_name" {
@@ -24,19 +24,19 @@ variable "vcpu" {
 variable "disk_image" {
   type        = string
   description = "Path to the QCOW2 image."
-  default     = "https://cdimage.debian.org/images/cloud/bookworm/latest/debian-12-generic-amd64.qcow2"
+  default     = "http://pluto/packer-debian-latest.qcow2"
 }
 
 variable "storage_pool" {
   type        = string
   description = "Libvirt storage pool for the VM disk."
-  default     = "lab"
+  default     = "default"
 }
 
 variable "network" {
   type        = string
   description = "Libvirt network name for the VM."
-  default     = "lab"
+  default     = "default"
 }
 
 variable "vmcount" {
