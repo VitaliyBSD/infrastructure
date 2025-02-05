@@ -1,6 +1,5 @@
 syntax on
 filetype indent plugin on
-" set cursorline
 set expandtab
 set nobackup          " Do not write backup files
 set noswapfile        " Do not write .swp files
@@ -9,7 +8,6 @@ set number
 set shiftwidth=4
 set softtabstop=4
 set tabstop=8
-set background=light
 set cursorline
 set list
 set lcs+=space:·
@@ -21,10 +19,12 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'hashivim/vim-terraform'
 Plugin 'sainnhe/sonokai'
 Plugin 'fatih/vim-go'
+Plugin 'morhetz/gruvbox'
 call vundle#end()
 filetype plugin indent on
 
-colorscheme sonokai
+let g:gruvbox_italic=1
+colorscheme gruvbox
 
 map <C-n> :NERDTreeToggle<CR>   " Ctrl+N to toggle NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif " Close vim if NERDTree is the last open window
