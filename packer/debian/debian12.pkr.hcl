@@ -4,10 +4,10 @@ variable "image_name" {
 }
 
 source "qemu" "debian12" {
-  iso_urls         = ["http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/debian-12.9.0-amd64-netinst.iso"]
-  iso_checksum     = "file:http://cdimage.debian.org/debian-cd/current/amd64/iso-cd/SHA512SUMS"
+  iso_urls         = ["http://mercury/debian-12.9.0-amd64-netinst.iso"]
+  iso_checksum     = "file:http://mercury/SHA512SUMS"
   output_directory = "output-debian12"
-  disk_size        = "20000" # 20GB
+  disk_size        = "5000"
   format           = "qcow2"
   accelerator      = "kvm"
   cpus             = 2
@@ -32,9 +32,10 @@ source "qemu" "debian12" {
   http_directory   = "http"
   shutdown_command = "sudo shutdown -h now"
   communicator     = "ssh"
-  ssh_username     = "packer"
-  ssh_password     = "packer"
+  ssh_username     = "vitaliy"
+  ssh_password     = "vitaliy"
   ssh_timeout      = "30m"
+  headless         = true
 }
 
 build {
