@@ -15,6 +15,12 @@
     name: '{{ username }}'
     shell: /bin/bash
 
+- name: Set authorized key taken from file
+  ansible.posix.authorized_key:
+    user: '{{ username }}'
+    state: present
+    key: "{{ lookup('file', '/home/{{ username }}/.ssh/id_rsa.pub') }}"
+
 - name: Create sudo config for user
   ansible.builtin.template:
     dest: /etc/sudoers.d/{{ username }}
