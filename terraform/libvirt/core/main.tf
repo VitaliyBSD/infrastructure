@@ -7,7 +7,7 @@ terraform {
 }
 
 provider "libvirt" {
-  uri = "qemu+ssh://root@mercury/system"
+  uri = "qemu:///system"
 }
 
 resource "libvirt_pool" "lab" {
@@ -21,6 +21,6 @@ resource "libvirt_pool" "lab" {
 resource "libvirt_network" "lab" {
   name      = "lab"
   mode      = "nat"
-  domain    = "yolo.local"
+  domain    = "lab.local"
   addresses = ["10.0.0.1/8"]
 }
