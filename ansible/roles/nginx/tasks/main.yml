@@ -1,0 +1,29 @@
+---
+
+- name: Install Nginx
+  ansible.builtin.apt:
+    name: nginx
+    state: present
+
+- name: Create Nginx directories
+  ansible.builtin.file:
+    path: /srv/www
+    state: directory
+    owner: www-data
+    group: www-data
+    mode: '0755'
+
+- name: Populate Nginx lab configuration
+  ansible.builtin.template:
+    src: lab.conf.j2
+    dest: /etc/nginx/conf.d/lab.conf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: Restart Nginx
+
+- name: Ensure Nginx is running and enabled
+  ansible.builtin.systemd:
+    name: nginx
+    state: started
+    enabled: true
