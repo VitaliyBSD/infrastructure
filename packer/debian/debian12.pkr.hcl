@@ -26,6 +26,9 @@ source "qemu" "debian12" {
     "debian-installer/locale=en_US <wait>",
     "console-setup/ask_detect=false <wait>",
     "keyboard-configuration/xkb-keymap=us <wait>",
+    "grub-installer/only_debian=true <wait>",
+    "grub-installer/with_other_os=false <wait>",
+    "grub-installer/bootdev=/dev/vda <wait>",
     "<enter>"
   ]
 
