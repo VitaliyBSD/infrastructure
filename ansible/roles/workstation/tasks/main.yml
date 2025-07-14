@@ -19,19 +19,21 @@
     - fonts-open-sans
     - fonts-terminus-otb
     - git
-    - sway
-    - swaylock
     - keepassx
     - kitty
     - neovim
+    - pipewire
+    - pipewire-audio-client-libraries
     - pulsemixer
+    - sway
+    - swaylock
     - syncthing
     - telegram-desktop
     - tig
     - vlc
-    - weechat
-    - wayland-utils
     - waybar
+    - wayland-utils
+    - weechat
 
 - name: Create Kitty config directory
   ansible.builtin.file:
