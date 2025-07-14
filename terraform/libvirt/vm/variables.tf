@@ -36,7 +36,7 @@ variable "storage_pool" {
 variable "network" {
   type        = string
   description = "Libvirt network name for the VM."
-  default     = "default"
+  default     = "lab"
 }
 
 variable "vmcount" {
