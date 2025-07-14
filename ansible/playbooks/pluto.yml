@@ -6,4 +6,6 @@
   roles:
     - core
     - workstation
+    - libvirt
+    - nginx
 
