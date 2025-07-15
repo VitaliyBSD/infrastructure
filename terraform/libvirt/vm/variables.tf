@@ -30,7 +30,7 @@ variable "disk_image" {
 variable "storage_pool" {
   type        = string
   description = "Libvirt storage pool for the VM disk."
-  default     = "default"
+  default     = "lab"
 }
 
 variable "network" {
