@@ -23,4 +23,5 @@ resource "libvirt_network" "lab" {
   mode      = "nat"
   domain    = "lab.local"
   addresses = ["10.0.0.1/8"]
+  autostart = true
 }
