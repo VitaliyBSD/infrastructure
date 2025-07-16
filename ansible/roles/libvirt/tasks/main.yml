@@ -14,6 +14,21 @@
     groups: libvirt
     name: "{{ username }}"
 
+- name: Create /srv/vm directory
+  ansible.builtin.file:
+    path: /srv/vm
+    state: directory
+    owner: libvirt-qemu
+    group: libvirt
+    mode: '0755'
+
+- name: Ensure correct security_driver is set
+  ansible.builtin.lineinfile:
+    path: /etc/libvirt/qemu.conf
+    regexp: '^security_driver ='
+    line: 'security_driver = "none"'
+    create: true
+
 - name: Start libvirtd
   ansible.builtin.service:
     enabled: true
