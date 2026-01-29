@@ -19,7 +19,6 @@
     - fonts-open-sans
     - fonts-terminus-otb
     - git
-    - keepassx
     - kitty
     - neovim
     - pipewire
@@ -27,7 +26,6 @@
     - pulsemixer
     - sway
     - swaylock
-    - syncthing
     - telegram-desktop
     - tig
     - vlc
