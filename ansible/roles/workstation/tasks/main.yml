@@ -9,7 +9,6 @@
   with_items:
     - ansible
     - arandr
-    - feh
     - firefox-esr
     - fonts-firacode
     - fonts-font-awesome
@@ -26,12 +25,10 @@
     - pulsemixer
     - sway
     - swaylock
-    - telegram-desktop
     - tig
     - vlc
     - waybar
     - wayland-utils
-    - weechat
 
 - name: Create Kitty config directory
   ansible.builtin.file:
