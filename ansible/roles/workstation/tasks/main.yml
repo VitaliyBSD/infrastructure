@@ -8,7 +8,6 @@
     state: present
   with_items:
     - ansible
-    - arandr
     - firefox-esr
     - fonts-firacode
     - fonts-font-awesome
@@ -29,6 +28,7 @@
     - vlc
     - waybar
     - wayland-utils
+    - wlsunset
 
 - name: Create Kitty config directory
   ansible.builtin.file:
