@@ -43,33 +43,7 @@
     clean: true
     name: '{{ item }}'
     state: present
-  with_items:
-    - bind9-dnsutils
-    - curl
-    - ethtool
-    - hdparm
-    - htop
-    - iftop
-    - iotop
-    - jq
-    - lftp
-    - lm-sensors
-    - lshw
-    - lsof
-    - mtr
-    - neovim
-    - net-tools
-    - netcat-traditional
-    - nmap
-    - openssh-client
-    - openssh-server
-    - pv
-    - tcpdump
-    - tmux
-    - tree
-    - unzip
-    - wget
-    - whois
+  loop: "{{ core_packages }}"
 
 - name: Create NeoVIM config directory
   ansible.builtin.file:

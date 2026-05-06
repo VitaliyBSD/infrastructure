@@ -1,0 +1,28 @@
+---
+core_packages:
+  - bind9-dnsutils
+  - curl
+  - ethtool
+  - hdparm
+  - htop
+  - iftop
+  - iotop
+  - jq
+  - lftp
+  - lm-sensors
+  - lshw
+  - lsof
+  - mtr
+  - neovim
+  - net-tools
+  - netcat-traditional
+  - nmap
+  - openssh-client
+  - openssh-server
+  - pv
+  - tcpdump
+  - tmux
+  - tree
+  - unzip
+  - wget
+  - whois
